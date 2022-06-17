@@ -121,7 +121,7 @@ export const defaultStreetViewOptions = {
   linksControl: true,
   disableDefaultUI: true,
   zoomControl: true,
-  clickToGo: false,
+  clickToGo: true,
 };
 
 export const combineStreetViewOptions = (

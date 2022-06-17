@@ -9,9 +9,11 @@ import { debouncedStreetViewImageChange } from "./debounceFunc";
 
 function App() {
   const [streetViewPov, setStreetViewPov] = React.useState<{
+    pano: string;
     pov: google.maps.StreetViewPov;
     zoom: number;
   }>({
+    pano: "",
     pov: {
       heading: 247,
       pitch: 8,
@@ -32,7 +34,7 @@ function App() {
     result: ReturnType<typeof generateInfo>,
     map: google.maps.Map
   ) => {
-    // console.log("onPositionChanged -> ", result);
+    console.log("onPositionChanged -> ", result.pano);
     debouncedStreetViewImageChange(result, setStreetViewPov);
     if (result.position && result.pov) {
       setIsNextPosition(false);
@@ -82,6 +84,7 @@ function App() {
                 <Typography variant="h6">
                   Zoom: {Math.round(streetViewPov.zoom)}
                 </Typography>
+                <Typography variant="h6">pano: {streetViewPov.pano}</Typography>
               </Stack>
             </Grid>
             <Grid item xs={4}>
